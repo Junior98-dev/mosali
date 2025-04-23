@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { EmployeeService } from '../../core/services/employee.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -10,6 +11,10 @@ import { RouterLink } from '@angular/router';
         <h3>Liste des employés</h3>
         <button routerLink="/add-employee">Nouvel employé</button>
       </header>
+      <div class="employee-container">
+        
+      </div>
+
     </main>
   `,
   styles: `
@@ -27,5 +32,7 @@ import { RouterLink } from '@angular/router';
   `
 })
 export class EmployeeListComponent {
-
+  private es = inject(EmployeeService);
+  employees = this.es.getEmployees();
+  
 }
