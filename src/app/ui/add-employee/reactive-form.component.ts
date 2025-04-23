@@ -1,6 +1,8 @@
 import { Component, inject, NgModule } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { employee } from '../../core/models/employee.model';
+import { EmployeeService } from '../../core/services/employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reactive-form',
@@ -123,6 +125,8 @@ import { employee } from '../../core/models/employee.model';
 })
 export class ReactiveFormComponent {
   private fb = inject(FormBuilder);
+  private es = inject(EmployeeService);
+  private router = inject(Router);   
 
   employeeForm = this.fb.nonNullable.group({
     fullName : ['', [Validators.required]],
@@ -159,7 +163,8 @@ export class ReactiveFormComponent {
       const employee:employee = {
         ...this.employeeForm.getRawValue(),
       }
-      console.log(employee);
+      this.es.addEmployee(employee);
+      this.router.navigate(['/']);
       
     }else{
       this.employeeForm.markAllAsTouched();
