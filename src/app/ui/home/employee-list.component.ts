@@ -15,7 +15,7 @@ import { EmployeeInfoComponent } from "./employee-info.component";
       <div class="employee-container">
         @for (employee of employees; track $index) {
           <a class="employee-card" [routerLink]="'/employees/'+ $index">
-            <app-employee-info />
+            <app-employee-info [employee]="employee"/>
           </a>
           <br/>
         }@empty {
