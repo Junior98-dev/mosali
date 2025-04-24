@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { EmployeeService } from '../../core/services/employee.service';
+import { EmployeeInfoComponent } from "./employee-info.component";
 
 @Component({
   selector: 'app-employee-list',
-  imports: [RouterLink],
+  imports: [RouterLink, EmployeeInfoComponent],
   template: `
     <main>
       <header>
@@ -12,7 +13,16 @@ import { EmployeeService } from '../../core/services/employee.service';
         <button routerLink="/add-employee">Nouvel employé</button>
       </header>
       <div class="employee-container">
-        
+        @for (employee of employees; track $index) {
+          <a class="employee-card" [routerLink]="'/employees/'+ $index">
+            <app-employee-info />
+          </a>
+          <br/>
+        }@empty {
+          <p align="center">Oups! la liste est vide ...! <br/>
+             commencez par ajouter un employé.
+          </p>
+        }
       </div>
 
     </main>
@@ -27,6 +37,20 @@ import { EmployeeService } from '../../core/services/employee.service';
         justify-content: space-between;
         align-items: center;
       }
+
+      .employee-card{
+        border: 1px solid grey;
+        padding-left: 1rem;
+        text-decoration: none;
+        display: block;
+        color: inherit;
+        border-radius: 8px;
+        transition: 250ms ease-in-out;
+
+        &:hover{
+          scale: 0.98;
+        }
+      }
     }
   
   `
@@ -34,5 +58,5 @@ import { EmployeeService } from '../../core/services/employee.service';
 export class EmployeeListComponent {
   private es = inject(EmployeeService);
   employees = this.es.getEmployees();
-  
+
 }
