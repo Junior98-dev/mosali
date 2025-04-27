@@ -10,5 +10,6 @@ export class EmployeeService {
 
   addEmployee = (employee: employee) =>{this.employees.push(employee);}
   getEmployees = () => this.employees;
-  
+  getEmployee = (index: number) => this.employees[index]; // find the employee by index
+
 }

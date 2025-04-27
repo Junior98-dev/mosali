@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
   template: `
     <header class="toolbar navigation-back">
       <button routerLink="/"><</button>
-      <h2>Nouvel employé</h2>
+      <h2>{{toolbarTitle()}}</h2>
     </header>
   `,
   styles: `
@@ -18,5 +18,5 @@ import { RouterLink } from '@angular/router';
   `
 })
 export class NavigationBackToolbarComponent {
-  
+  toolbarTitle = input.required<string>();
 }
