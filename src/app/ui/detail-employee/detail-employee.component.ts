@@ -5,7 +5,7 @@ import { NavigationBackToolbarComponent } from "../shared/navigation-back-toolba
   selector: 'app-detail-employee',
   imports: [NavigationBackToolbarComponent],
   template: `
-   <app-navigation-back-toolbar/> 
+   <app-navigation-back-toolbar /> 
   `,
   styles: ``
 })

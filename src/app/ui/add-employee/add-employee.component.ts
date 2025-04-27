@@ -7,7 +7,7 @@ import { NavigationBackToolbarComponent } from "../shared/navigation-back-toolba
   selector: 'app-add-employee',
   imports: [ReactiveFormComponent, NavigationBackToolbarComponent],
   template: `
-   <app-navigation-back-toolbar/>
+   <app-navigation-back-toolbar toolbarTitle="Nouvel employé"/>
     <app-reactive-form/>
   `,
   styles: `
