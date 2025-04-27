@@ -12,6 +12,13 @@ import { Title } from '@angular/platform-browser';
   template: `
    <app-navigation-back-toolbar [toolbarTitle]="employee ? employee.fullName : ''"/> 
    <app-employee-info [employee]="employee"/>
+
+   <hr>
+
+   <div class="actions">
+    <button class="btn btn-primary">Modifier</button>
+    <button class="btn btn-danger">Supprimer</button>
+   </div>
   `,
   styles: ``
 })
