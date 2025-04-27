@@ -11,17 +11,34 @@ import { Title } from '@angular/platform-browser';
   imports: [NavigationBackToolbarComponent, EmployeeInfoComponent],
   template: `
    <app-navigation-back-toolbar [toolbarTitle]="employee ? employee.fullName : ''"/> 
-   <app-employee-info [employee]="employee"/>
 
-   <hr>
+   <div class="employee-container">
+      <app-employee-info [employee]="employee"/>
 
-   <div class="actions">
-    <button class="btn btn-primary" (click)="onEditEmployee(id(), employee)">Modifier</button>
-    <button class="btn btn-danger" (click)="onDeleteEmployee(id())">Supprimer</button>
+      <hr>
+
+      <div class="actions">
+        <button class="btn btn-primary" (click)="onEditEmployee(id(), employee)">Modifier</button>
+        <button class="delete-btn" (click)="onDeleteEmployee(id())">Supprimer</button>
+      </div>
    </div>
+   
   `,
   styles: `
+    .employee-container {
+      max-width: 1200px;
+      margin: 1rem auto;
     
+    .actions {
+      display: flex;
+      justify-content: end;
+      gap: 1rem;
+
+      .delete-btn{
+        background-color: red;
+      }
+    }
+  }
   `
 })
 export default class DetailEmployeeComponent implements OnInit {
