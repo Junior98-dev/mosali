@@ -16,14 +16,17 @@ import { Title } from '@angular/platform-browser';
    <hr>
 
    <div class="actions">
-    <button class="btn btn-primary">Modifier</button>
-    <button class="btn btn-danger">Supprimer</button>
+    <button class="btn btn-primary" (click)="onEditEmployee(id(), employee)">Modifier</button>
+    <button class="btn btn-danger" (click)="onDeleteEmployee(id())">Supprimer</button>
    </div>
   `,
-  styles: ``
+  styles: `
+    
+  `
 })
 export default class DetailEmployeeComponent implements OnInit {
-  id = input();
+
+  id = input('id');
   employee!:employee;
   private es = inject(EmployeeService);
   private router = inject(Router);
@@ -39,6 +42,15 @@ export default class DetailEmployeeComponent implements OnInit {
     }else{
       this.router.navigate(['/']);
     }
+  }
+
+  onEditEmployee(id: string, employee: employee) {
+    this.es.editEmployee(Number(id), employee);
+    this.router.navigate(['/']);
+  }
+  onDeleteEmployee(id: string) {
+    this.es.deleteEmployee(Number(id));
+    this.router.navigate(['/']);
   }
 
 }
