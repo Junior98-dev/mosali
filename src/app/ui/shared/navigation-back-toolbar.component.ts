@@ -1,15 +1,22 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navigation-back-toolbar',
-  imports: [],
+  imports: [RouterLink],
   template: `
-    <p>
-      navigation-back-toolbar works!
-    </p>
+    <header class="toolbar navigation-back">
+      <button routerLink="/"><</button>
+      <h2>Nouvel employé</h2>
+    </header>
   `,
-  styles: ``
+  styles: `
+    .navigation-back {
+      justify-content: start;
+      gap: 1rem
+    }
+  `
 })
 export class NavigationBackToolbarComponent {
-
+  
 }

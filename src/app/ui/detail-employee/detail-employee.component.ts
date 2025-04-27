@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { NavigationBackToolbarComponent } from "../shared/navigation-back-toolbar.component";
 
 @Component({
   selector: 'app-detail-employee',
-  imports: [],
+  imports: [NavigationBackToolbarComponent],
   template: `
-    <p>
-      detail-employee works!
-    </p>
+   <app-navigation-back-toolbar/> 
   `,
   styles: ``
 })

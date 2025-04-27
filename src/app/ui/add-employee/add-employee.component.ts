@@ -1,22 +1,17 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ReactiveFormComponent } from "./reactive-form.component";
+import { NavigationBackToolbarComponent } from "../shared/navigation-back-toolbar.component";
 
 @Component({
   selector: 'app-add-employee',
-  imports: [RouterLink, ReactiveFormComponent],
+  imports: [ReactiveFormComponent, NavigationBackToolbarComponent],
   template: `
-    <header class="toolbar navigation-back">
-      <button routerLink="/"><</button>
-      <h2>Nouvel employé</h2>
-    </header>
+   <app-navigation-back-toolbar/>
     <app-reactive-form/>
   `,
   styles: `
-    .navigation-back {
-      justify-content: start;
-      gap: 1rem
-    }
+    
   `
 })
 export default class AddEmployeeComponent {
