@@ -1,4 +1,4 @@
-import { Component, inject, NgModule } from '@angular/core';
+import { Component, inject, NgModule, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { employee } from '../../core/models/employee.model';
 import { EmployeeService } from '../../core/services/employee.service';
@@ -171,9 +171,13 @@ export class ReactiveFormComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    const employee = this.router.getCurrentNavigation()?.extras.state?.['employee'];
-    if (employee) {
+    if (history.state.employee.fullName) {
+      const employee = history.state as employee;
       this.employeeForm.patchValue(employee);
+      employee.hobbies.forEach((hobby) => {
+        const formControl = this.fb.nonNullable.control(hobby);
+        this.employeeForm.controls.hobbies.push(formControl);
+      }); 
     }
   }
 }
