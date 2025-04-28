@@ -1,4 +1,5 @@
 export interface employee{
+    id?: string
     fullName:string;
     email:string;
     phone:string;
