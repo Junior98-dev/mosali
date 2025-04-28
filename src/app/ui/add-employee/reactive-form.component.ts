@@ -123,7 +123,7 @@ import { Router } from '@angular/router';
     }
   `
 })
-export class ReactiveFormComponent {
+export class ReactiveFormComponent implements OnInit {
   private fb = inject(FormBuilder);
   private es = inject(EmployeeService);
   private router = inject(Router);   
@@ -168,6 +168,12 @@ export class ReactiveFormComponent {
       
     }else{
       this.employeeForm.markAllAsTouched();
+    }
+  }
+  ngOnInit(): void {
+    const employee = this.router.getCurrentNavigation()?.extras.state?.['employee'];
+    if (employee) {
+      this.employeeForm.patchValue(employee);
     }
   }
 }
