@@ -149,6 +149,17 @@ export class ReactiveFormComponent implements OnInit {
     ])
   })
 
+  ngOnInit(): void {
+    if (history.state.fullName) {
+      const employee = history.state as employee;
+      this.employeeForm.patchValue(employee);
+      employee.hobbies.forEach((hobby) => {
+        const formControl = this.fb.nonNullable.control(hobby);
+        this.employeeForm.controls.hobbies.push(formControl);
+      }); 
+    }
+  }
+
   addHobbyForm(){
     const formControl = this.fb.nonNullable.control('');
     this.employeeForm.controls.hobbies.push(formControl);
@@ -170,14 +181,5 @@ export class ReactiveFormComponent implements OnInit {
       this.employeeForm.markAllAsTouched();
     }
   }
-  ngOnInit(): void {
-    if (history.state.employee.fullName) {
-      const employee = history.state as employee;
-      this.employeeForm.patchValue(employee);
-      employee.hobbies.forEach((hobby) => {
-        const formControl = this.fb.nonNullable.control(hobby);
-        this.employeeForm.controls.hobbies.push(formControl);
-      }); 
-    }
-  }
+  
 }

@@ -62,8 +62,8 @@ export default class DetailEmployeeComponent implements OnInit {
   }
 
   onEditEmployee(id: string, employee: employee) {
-    this.employee.id = id;
-    this.router.navigate(['/add-employee', id], { state: { employee } });
+    employee.id = id;
+    this.router.navigate(['/add-employee'], {state: employee });
   }
   onDeleteEmployee(id: string) {
     this.es.deleteEmployee(Number(id));
