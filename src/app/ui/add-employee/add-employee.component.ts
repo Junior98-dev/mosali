@@ -7,7 +7,7 @@ import { NavigationBackToolbarComponent } from "../shared/navigation-back-toolba
   selector: 'app-add-employee',
   imports: [ReactiveFormComponent, NavigationBackToolbarComponent],
   template: `
-   <app-navigation-back-toolbar toolbarTitle="Nouvel employé"/>
+   <app-navigation-back-toolbar [toolbarTitle]="fullName === undefined ? 'Nouvel employé' : 'Modifier ' + fullName"/>
     <app-reactive-form/>
   `,
   styles: `
@@ -15,5 +15,5 @@ import { NavigationBackToolbarComponent } from "../shared/navigation-back-toolba
   `
 })
 export default class AddEmployeeComponent {
-
+  fullName = history.state.fullName;
 }
