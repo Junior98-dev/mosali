@@ -156,7 +156,7 @@ export class ReactiveFormComponent implements OnInit {
       employee.hobbies.forEach((hobby) => {
         const formControl = this.fb.nonNullable.control(hobby);
         this.employeeForm.controls.hobbies.push(formControl);
-      }); 
+      })
     }
   }
 
