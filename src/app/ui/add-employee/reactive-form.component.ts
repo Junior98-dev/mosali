@@ -153,6 +153,7 @@ export class ReactiveFormComponent implements OnInit {
     if (history.state.fullName) {
       const employee = history.state as employee;
       this.employeeForm.patchValue(employee);
+      this.removeFormHobby(0);
       employee.hobbies.forEach((hobby) => {
         const formControl = this.fb.nonNullable.control(hobby);
         this.employeeForm.controls.hobbies.push(formControl);
@@ -165,6 +166,7 @@ export class ReactiveFormComponent implements OnInit {
     this.employeeForm.controls.hobbies.push(formControl);
   }
 
+  
   removeFormHobby(index: number){
     this.employeeForm.controls.hobbies.removeAt(index)
   }
