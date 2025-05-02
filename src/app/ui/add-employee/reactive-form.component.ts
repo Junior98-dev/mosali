@@ -175,10 +175,14 @@ export class ReactiveFormComponent implements OnInit {
     if (this.employeeForm.valid) {
       const employee:employee = {
         ...this.employeeForm.getRawValue(),
+      };
+      if (history.state.id) {
+        const id = Number(history.state.id);
+        this.es.editEmployee(id, employee);
+      }else{
+        this.es.addEmployee(employee);
       }
-      this.es.addEmployee(employee);
       this.router.navigate(['/']);
-      
     }else{
       this.employeeForm.markAllAsTouched();
     }
